@@ -1,4 +1,5 @@
 @BASE_URL = http://localhost:3001/api
+@AccessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2NTcyODMwNywiZXhwIjoxNzY1ODE0NzA3fQ.rtg2eg-ipWhft6kIDn8bR592s5AlvZ98sDHcRvTDdvE
 
 ### Login
 POST {{BASE_URL}}/auth/login
@@ -6,8 +7,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "abcer35",
-  "password": "dfasdfdf"
+  "usernameOrEmail": "abcdef2",
+  "password": "abcdef"
 }
 
 ### Register
@@ -16,6 +17,18 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "username": "abc456",
-  "password": "password"
+  "username": "abcdef2",
+  "email": "abcd2@gmail.com",
+  "first_name": "ABC",
+  "last_name": "DEF",
+  "password": "abcdef"
 }
+
+
+### User
+GET {{BASE_URL}}/user
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccessToken}}
+
+

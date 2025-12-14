@@ -6,17 +6,17 @@ const requestValidatorMiddleware = (schema: ObjectSchema) => {
         try {
             const { error } = schema.validate(req.body);
             if (error) {
-                return res.json({
+                return res.status(400).json({
                     status: 400,
                     message: error?.message
                 })
             }
             next();
         } catch (err: any) {
-            res.json({
+            res.status(400).json({
                 status: 400,
                 message: err.message
-            })
+            });
         }
     }
 }
