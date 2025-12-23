@@ -14,7 +14,8 @@ interface TokenInfo{
 
  export const loginSchema = Joi.object({
         usernameOrEmail:  Joi.string().max(300).min(5).required(),
-        password: Joi.string().max(20).min(5).required()
+        password: Joi.string().max(20).min(5).required(),
+        remember: Joi.boolean().optional()
     })
 
 const loginController = async(req: Request, res: Response) => {
