@@ -1,0 +1,35 @@
+@BASE_URL =http://localhost:3001/api
+@AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcl9uYW1lIjoic2FoaW4iLCJpYXQiOjE3NjY0NzM4MjksImV4cCI6MTc2NjU2MDIyOX0.dZEsXjw8EQokjtnt8_vXZp2rNjspfdkY4g7XAbhOAhM
+
+### get category  list
+GET {{BASE_URL}}/master/category
+Content-Type: application/json
+Accept: application/json
+
+### create category 
+POST {{BASE_URL}}/master/category
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccesToken}}
+
+{
+    "category_name": "computer",
+    "category_descriptions": "All kinds of compute items"
+}
+
+
+### create collection 
+POST {{BASE_URL}}/master/collection
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccesToken}}
+
+{
+    "collection_name": "summer",
+    "collection_descriptions": "All kinds of summmer items"
+}
+
+### get collection list
+GET {{BASE_URL}}/master/collection
+Content-Type: application/json
+Accept: application/json
