@@ -1,5 +1,4 @@
 import { Router } from "express";
-import authMiddleware from "../../middleware/auth.middleware.js";
 
 
 // Controllers
@@ -9,7 +8,8 @@ import { createCollectionController, createCollectionSchema } from "./controller
 import { getCollectionListSchema, getCollectionListController } from "./controllers/category/getCollectionList.controller.js";
 import { createVendorController, updateVendorController, vendorSchemas } from "./controllers/category/createVendor.controller.js";
 import { getVendorListController } from "./controllers/category/getVendorList.controller.js";
-import requestValidatorMiddleware from "../../middleware/request-validator.middleware.js";
+import authMiddleware from "../../middlewares/auth.middleware.js";
+import requestValidatorMiddleware from "../../middlewares/request-validator.middleware.js";
 
 const masterRouter = Router();
 
