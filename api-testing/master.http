@@ -1,5 +1,5 @@
 @BASE_URL =http://localhost:3001/api
-@AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OCwidXNlcl9uYW1lIjoic2FoaW4iLCJpYXQiOjE3NjY0NzM4MjksImV4cCI6MTc2NjU2MDIyOX0.dZEsXjw8EQokjtnt8_vXZp2rNjspfdkY4g7XAbhOAhM
+@AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2NjUwMDUzMCwiZXhwIjoxNzY2NTg2OTMwfQ.wvR5bwvzcYcRvbZiuRXeDJeO5wD8WAycwQLpvtVQE3g
 
 ### get category  list
 GET {{BASE_URL}}/master/category
@@ -32,8 +32,8 @@ Authorization: {{AccesToken}}
 ### get collection list
 GET {{BASE_URL}}/master/collection
 Content-Type: application/json
-Accept: application/json@BASE_URL = http://localhost:3001/api
-@AccessToken = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2NjMyMjkwOSwiZXhwIjoxNzY2NDA5MzA5fQ.TIon7t7_03EM1nZieo_O8h25WYdmtKgFe26l_l-N0EI
+Accept: application/json
+
 
 
 ### get category list
@@ -46,7 +46,7 @@ Accept: application/json
 POST {{BASE_URL}}/master/category
 Content-Type: application/json
 Accept: application/json
-Authorization: {{AccessToken}}
+Authorization: {{AccesToken}}
 
 {
   "category_name": "Beauty",
