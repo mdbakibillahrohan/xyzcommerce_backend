@@ -2,7 +2,7 @@
 @AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2NjUwMDUzMCwiZXhwIjoxNzY2NTg2OTMwfQ.wvR5bwvzcYcRvbZiuRXeDJeO5wD8WAycwQLpvtVQE3g
 
 ### get category  list
-GET {{BASE_URL}}/master/category
+GET {{BASE_URL}}/master/category?offset=10&limit=10
 Content-Type: application/json
 Accept: application/json
 
