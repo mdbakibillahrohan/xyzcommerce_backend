@@ -32,7 +32,7 @@ export const getCategoryListController = async (req: Request, res: Response) => 
         dataParams.push(`%${searchText}%`);
         countParams.push(`%${searchText}%`);
     }
-
+    dataQuery+=` order by category_id desc`;
     dataQuery+=` LIMIT ? OFFSET ?`
     dataParams.push(Number(limit),Number(offset));
 
