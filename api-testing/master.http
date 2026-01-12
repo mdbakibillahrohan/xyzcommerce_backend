@@ -1,5 +1,5 @@
 @BASE_URL =http://localhost:3001/api
-@AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2Nzg3ODE2MiwiZXhwIjoxNzY3OTY0NTYyfQ.jhKWAjNI6-qgmU8sWrrKahks3JQ-RfKMARy8QbWmIM4
+@AccesToken=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcl9uYW1lIjoiYWJjZGVmMiIsImlhdCI6MTc2ODIwMzIzOSwiZXhwIjoxNzY4Mjg5NjM5fQ.24hmAcVM3tS8ssXHMG0dxYYbiFSqJ-u7huFJgEj57iM
 
 ### get category  list
 GET {{BASE_URL}}/master/category?offset=10&limit=10
@@ -64,9 +64,42 @@ Authorization: {{AccesToken}}
   "category_descriptions": "All kinds of watch"
 }
 
-
 ### Delete category 
 DELETE  {{BASE_URL}}/master/category/15
 Content-Type: application/json
 Accept: application/json
 Authorization: {{AccesToken}}
+
+
+
+// collection apis
+
+### create collection
+POST {{BASE_URL}}/master/collection
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccesToken}}
+
+{
+  "collection_name": "Beauty",
+  "collection_descriptions": "Category for beauty products"
+}
+### Delete collection
+DELETE  {{BASE_URL}}/master/collection
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccesToken}}
+
+## update collection 
+PUT {{BASE_URL}}/master/collection/10
+Content-Type: application/json
+Accept: application/json
+Authorization: {{AccesToken}}
+
+{
+  "collection_name": "ABC Watch",
+  "collection_descriptions": "All kinds of watch"
+}
+
+
+

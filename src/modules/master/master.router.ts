@@ -12,6 +12,8 @@ import authMiddleware from "../../middlewares/auth.middleware.js";
 import requestValidatorMiddleware from "../../middlewares/request-validator.middleware.js";
 import { updateCategoryController, updateCategorySchema } from "./controllers/category/updateCategory.controller.js";
 import { deleteCategoryController } from "./controllers/category/deleteCategory.controller.js";
+import { updateCollectionController, updateCollectionSchema } from "./controllers/collection/updateCollection.controller.js";
+import { deleteCollectionController } from "./controllers/collection/deleteCollection.controller.js";
 
 const masterRouter = Router();
 
@@ -24,11 +26,12 @@ masterRouter.delete("/category/:category_id", authMiddleware, deleteCategoryCont
 // Collection Routes
 masterRouter.post("/collection", authMiddleware, requestValidatorMiddleware(createCollectionSchema), createCollectionController);
 masterRouter.get("/collection", requestValidatorMiddleware(getCollectionListSchema), getCollectionListController);
+masterRouter.put("/collection/:collection_id", authMiddleware, requestValidatorMiddleware(updateCollectionSchema), updateCollectionController);
+masterRouter.delete("/collection/:collection_id", authMiddleware, deleteCollectionController)
 
-
+// Vendor Routes
 masterRouter.post("/vendor", authMiddleware, requestValidatorMiddleware(vendorSchemas.create), createVendorController);
 masterRouter.put("/vendor", authMiddleware, requestValidatorMiddleware(vendorSchemas.update), updateVendorController);
-
 masterRouter.get("/vendor", requestValidatorMiddleware(vendorSchemas.update), getVendorListController);
 
 
