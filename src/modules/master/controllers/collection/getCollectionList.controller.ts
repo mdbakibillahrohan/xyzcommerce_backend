@@ -3,10 +3,6 @@ import Joi from "joi";
 
 import { Request, Response } from "express";
 import db_connection from "../../../../config/db.config.js";
-
-
-
-
 export const getCollectionListSchema = Joi.object({
     searchText: Joi.string().optional(),
     offset: Joi.number().min(0).required(),
