@@ -10,7 +10,7 @@ export const getVendorListSchema = Joi.object(
     }
 )
 export const getVendorListController = async (req: Request, res: Response) => {
-    let query = `select vendor_id , vendor_name, vendor_descriptions, address   from vendors`;
+    let query = `select vendor_id , vendor_name, description, vendor_address   from vendors`;
    const [result] = await db_connection.query(query);
     res.json({ vendors: result});
 }

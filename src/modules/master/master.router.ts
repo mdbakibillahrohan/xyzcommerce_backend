@@ -7,7 +7,7 @@ import { getCategoryListController, getCategoryListSchema } from "./controllers/
 import { createCollectionController, createCollectionSchema } from "./controllers/collection/createCollection.controller.js";
 import { getCollectionListSchema, getCollectionListController } from "./controllers/collection/getCollectionList.controller.js";
 import { createVendorController, updateVendorController, vendorSchemas } from "./controllers/vendor/createVendor.controller.js";
-import { getVendorListController } from "./controllers/vendor/getVendorList.controller.js";
+import { getVendorListController, getVendorListSchema } from "./controllers/vendor/getVendorList.controller.js";
 import authMiddleware from "../../middlewares/auth.middleware.js";
 import requestValidatorMiddleware from "../../middlewares/request-validator.middleware.js";
 import { updateCategoryController, updateCategorySchema } from "./controllers/category/updateCategory.controller.js";
@@ -32,7 +32,7 @@ masterRouter.delete("/collection/:collection_id", authMiddleware, deleteCollecti
 // Vendor Routes
 masterRouter.post("/vendor", authMiddleware, requestValidatorMiddleware(vendorSchemas.create), createVendorController);
 masterRouter.put("/vendor", authMiddleware, requestValidatorMiddleware(vendorSchemas.update), updateVendorController);
-masterRouter.get("/vendor", requestValidatorMiddleware(vendorSchemas.update), getVendorListController);
+masterRouter.get("/vendor", requestValidatorMiddleware(getVendorListSchema), getVendorListController);
 
 
 

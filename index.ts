@@ -5,14 +5,42 @@ import morgan from "morgan";
 import { configDotenv } from "dotenv";
 import appRouter from "./src/router.js";
 import configuration from "./src/config/config.js";
+import multer from "multer";
+import path from "path/win32";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 configDotenv()
+
+
+// Configure Multer Storage
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Files will be stored in the 'uploads' folder
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    console.log(uniqueSuffix);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+
+const upload = multer({ storage });
 
 const app:Express = express();
 //CORS = Cross Origin Resource Sharing
 app.use(cors({
     origin: "*"
 }));
+
+
+app.use(express.static(path.join(__dirname, 'uploads')));
+
 
 app.use(morgan("dev"));
 
@@ -21,6 +49,13 @@ app.use(express.json());
 app.get("/", (req:Request, res:Response)=>{
     res.send("Application is running");
 })
+
+app.post("/upload", upload.single('file'), (req:Request, res:Response)=>{
+    res.json({
+        message: "File uploaded successfully",
+        file: req.file
+    });
+});
 
 app.use("/api", appRouter);
 
