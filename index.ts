@@ -19,10 +19,10 @@ configDotenv()
 
 // Configure Multer Storage
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: (_req: any, _file: any, cb: (arg0: null, arg1: string) => void) => {
     cb(null, 'uploads/'); // Files will be stored in the 'uploads' folder
   },
-  filename: (req, file, cb) => {
+  filename: (_req: any, file: { originalname: string; }, cb: (arg0: null, arg1: string) => void) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
     console.log(uniqueSuffix);
     cb(null, uniqueSuffix + path.extname(file.originalname));
@@ -46,7 +46,7 @@ app.use(morgan("dev"));
 
 app.use(express.json());
 
-app.get("/", (req:Request, res:Response)=>{
+app.get("/", (_req:Request, res:Response)=>{
     res.send("Application is running");
 })
 
