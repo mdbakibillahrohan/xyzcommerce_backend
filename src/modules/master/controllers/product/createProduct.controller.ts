@@ -15,9 +15,9 @@ export const createProductSchema = Joi.object({
     }).required(),
     uploadedImagePath: Joi.string().allow(null).optional(),
     organization: Joi.object({
-        vendor: Joi.any().optional(),
-        category: Joi.number().integer().required(),
-        collections: Joi.array().items(Joi.number()).optional()
+        vendor_id: Joi.number().optional(),
+        category_id: Joi.number().integer().required(),
+        collection_id: Joi.number().optional()
     }).required()
 });
 export const createProductController = async (req: Request, res: Response) => {
@@ -45,8 +45,8 @@ export const createProductController = async (req: Request, res: Response) => {
             price.amount,            
             price.currency || 'BDT',
             uploadedImagePath || null,       
-            organization.vendor || null,
-            organization.category,
+            organization.vendor_id || 0,
+            organization.category_id || 0,
             userId
         ];
 
