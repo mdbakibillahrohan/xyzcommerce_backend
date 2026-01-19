@@ -6,7 +6,7 @@ const configuration = {
     db_password: process.env.DB_PASSWORD || "",
     db_port: Number(process.env.DB_PORT) || 3306,
     db_name: process.env.DB_NAME || "xyzcommerce",
-    app_port: process.env.PORT || 3001,
+    app_port: process.env.PORT || 3005,
     TOKEN_SECRET: process.env.TOKEN_SECRET || "8709753475"
 }
 
