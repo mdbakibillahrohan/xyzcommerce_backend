@@ -16,7 +16,7 @@ import { updateCollectionController, updateCollectionSchema } from "./controller
 import { deleteCollectionController } from "./controllers/collection/deleteCollection.controller.js";
 import { createProductController, createProductSchema } from "./controllers/product/createProduct.controller.js";
 import { deleteVendorController } from "./controllers/vendor/deletVendor.controller.js";
-import { getProductController } from "./controllers/product/getProduct.controller.js";
+import { getProductController, updateProductStatusController } from "./controllers/product/getProduct.controller.js";
 
 const masterRouter = Router();
 
@@ -42,7 +42,6 @@ masterRouter.delete("/vendor/:vendor_id", authMiddleware, deleteVendorController
 
 masterRouter.post("/products", authMiddleware, requestValidatorMiddleware(createProductSchema), createProductController);
 masterRouter.get("/products", getProductController); // Placeholder for get products controller
-
-
+masterRouter.patch("/products/status/:id", updateProductStatusController); // Placeholder for update product status controller
 
 export default masterRouter; 
