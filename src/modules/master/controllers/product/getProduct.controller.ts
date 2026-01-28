@@ -4,8 +4,8 @@ import Joi from "joi";
 
 export const getProductController = async (req: Request, res: Response) => {
     try {
-       
-        const query = `
+       const { status } = req.query;
+        let query = `
             SELECT 
                 p.product_id, 
                 p.product_name, 
@@ -13,6 +13,7 @@ export const getProductController = async (req: Request, res: Response) => {
                 p.price, 
                 p.stocks, 
                 p.image_path,
+                p.status,
                 c.category_name, 
                 v.vendor_name, 
                 col.collection_name 
@@ -20,10 +21,18 @@ export const getProductController = async (req: Request, res: Response) => {
             LEFT JOIN categories c ON p.category_id = c.category_id
             LEFT JOIN vendors v ON p.vendor_id = v.vendor_id
             LEFT JOIN collections col ON p.collection_id = col.collection_id
-            ORDER BY p.product_id DESC
+            
         `;
-        
-        const [rows] = await db_connection.query(query);
+        const queryparams = [];
+
+       if(status && status !== 'all'){
+            query += " WHERE p.status = ? ";
+            queryparams.push(status);
+        }
+
+        query += " ORDER BY p.product_id DESC ";
+
+        const [rows] = await db_connection.query(query, queryparams);
 
         return res.status(200).json({       
             success: true,
