@@ -3,7 +3,10 @@ import db_connection
 import { Request, Response } from "express";
 
 export const deleteProductController = async (req: Request, res: Response) => {
-  const productId = req.params.id;
+
+  const productId = req.params.product_id;
+
+  console.log(productId)
   let query = 'DELETE FROM products WHERE product_id = ?';
 
     await db_connection.execute(query, [productId]);
