@@ -14,9 +14,11 @@ import { updateCategoryController, updateCategorySchema } from "./controllers/ca
 import { deleteCategoryController } from "./controllers/category/deleteCategory.controller.js";
 import { updateCollectionController, updateCollectionSchema } from "./controllers/collection/updateCollection.controller.js";
 import { deleteCollectionController } from "./controllers/collection/deleteCollection.controller.js";
-import { createProductController, createProductSchema } from "./controllers/product/createProduct.controller.js";
+import { createProductController, createProductSchema } from "../product/controllers/product/createProduct.controller.js";
 import { deleteVendorController } from "./controllers/vendor/deletVendor.controller.js";
-import { getProductController, updateProductStatusController } from "./controllers/product/getProduct.controller.js";
+import { changeProductStatusController, getProductController,  } from "../product/controllers/product/getProduct.controller.js";
+import { updateProductController, updateProductSchema } from "../product/controllers/product/updateProduct.controller.js";
+import { deleteProductController } from "../product/controllers/product/deletProductController.js";
 
 const masterRouter = Router();
 
@@ -42,6 +44,7 @@ masterRouter.delete("/vendor/:vendor_id", authMiddleware, deleteVendorController
 
 masterRouter.post("/products", authMiddleware, requestValidatorMiddleware(createProductSchema), createProductController);
 masterRouter.get("/products", getProductController); // Placeholder for get products controller
-masterRouter.patch("/products/status/:id", updateProductStatusController); // Placeholder for update product status controller
-
+masterRouter.patch("/products/status/:id", changeProductStatusController); // Placeholder for update product status controller
+masterRouter.put("/products/:product_id", authMiddleware, requestValidatorMiddleware(updateProductSchema), updateProductController); // Placeholder for update product controller
+masterRouter.delete("/products/:product_id", authMiddleware, deleteProductController); // Placeholder for delete product controller
 export default masterRouter; 

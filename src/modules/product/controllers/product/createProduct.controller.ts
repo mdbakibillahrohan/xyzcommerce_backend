@@ -7,7 +7,7 @@ export const createProductSchema = Joi.object({
         name: Joi.string().min(2).max(100).required(),
         sku: Joi.string().required(),
         weight: Joi.number().min(0).optional(),
-        product_descriptions: Joi.string().allow('').optional(),
+        description: Joi.string().allow('').optional(),
     }).required(),
     price: Joi.object({
         amount: Joi.number().min(0).required(),
@@ -33,21 +33,22 @@ export const createProductController = async (req: Request, res: Response) => {
 
         const query = `
             INSERT INTO products 
-            (product_name, sku, weight, product_descriptions, price, currency, image_path, vendor_id, category_id, created_by) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            (product_name, sku, weight, product_descriptions, price, currency, image_path, vendor_id, category_id, created_by, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)
         `;
 
         const values = [
             productInfo.name,        
             productInfo.sku,         
             productInfo.weight || 0,     
-            productInfo.product_descriptions || '', 
+            productInfo.description || '', 
             price.amount,            
             price.currency || 'BDT',
             uploadedImagePath || null,       
             organization.vendor_id || 0,
             organization.category_id || 0,
-            userId
+            userId,
+            'unpublished'
         ];
 
         const [result] = await db_connection.query(query, values);

@@ -49,7 +49,7 @@ export const getProductController = async (req: Request, res: Response) => {
     }       
 };
 
-export const updateProductStatusController = async (req: Request, res: Response) => {
+export const changeProductStatusController = async (req: Request, res: Response) => {
     try {
         const { id } = req.params; // product_id
         const { status } = req.body; // 'published' or 'unpublished'
